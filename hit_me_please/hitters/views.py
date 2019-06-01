@@ -1,3 +1,11 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.views import View
 
-# Create your views here.
+class LandingPageView(View):
+    def get(self, request):
+        html = '<form action="." method="post">'
+        html += '<input type="email" name="email">'
+        html += '<button type="submit">Submit</button>'
+        html += '</form>'
+        return HttpResponse(html)
