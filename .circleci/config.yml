@@ -15,7 +15,6 @@ jobs:
       - run:
           name:
           command: |
-            python3 -m venv ENV
             . ENV/bin/activate
             cd hit_me_please
             python manage.py test
