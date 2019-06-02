@@ -13,6 +13,7 @@ jobs:
             python3 -m venv ENV
             . ENV/bin/activate
             pip install -r requirements.txt
+            pip install ansible
       - run:
           name:
           command: |
@@ -25,3 +26,9 @@ jobs:
             docker build -t 59130500137/hitme:live .
             docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
             docker push 59130500137/hitme:live
+      - run:
+          name: deploy
+          command: |
+            . ENV/bin/activate
+            cd ansible
+            ansible-playbook -i hosts deploy.yml --extra-vars "project_path=~/hitme"
