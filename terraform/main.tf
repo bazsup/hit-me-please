@@ -29,6 +29,19 @@ resource "google_compute_instance" "tf_instance" {
   tags = ["my-web"]
 }
 
+resource "google_compute_firewall" "my-http-server" {
+  name    = "tf-default-allow-http"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["my-web"]
+}
+
 output "ip" {
   value = "${google_compute_instance.tf_instance.*.network_interface.0.access_config.0.nat_ip}"
 }
