@@ -2,6 +2,6 @@ version: '3.7'
 
 services:
   app:
-    image: 59130500137/hitme:v2
+    image: 59130500137/hitme:live
     ports:
       - 80:8000
