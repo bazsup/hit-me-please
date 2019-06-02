@@ -18,7 +18,7 @@ resource "google_compute_instance" "tf_instance" {
   }
 
   metadata = {
-    sshKeys = "bas:${file("~/.ssh/cicd-pronto-workshop.pub")}"
+    sshKeys = "circleci:${file("./circleci.pub")}"
   }
 
   network_interface {
